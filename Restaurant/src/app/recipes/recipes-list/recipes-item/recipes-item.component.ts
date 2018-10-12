@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import { Recipe } from '../../Recipes.model';
+import { Recipes } from '../../Recipes.model';
 import { RecipeService } from '../../../services/recipe.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { RecipeService } from '../../../services/recipe.service';
   styleUrls: ['./recipes-item.component.css']
 })
 export class RecipesItemComponent implements OnInit {
-@Input() recipe: Recipe;
+@Input() recipe: Recipes;
 
   constructor(private recipeService:RecipeService) { }
 
