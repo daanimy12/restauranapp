@@ -11,6 +11,7 @@ import { RecipesItemComponent } from './recipes/recipes-list/recipes-item/recipe
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { Ingredient } from './shared/ingredient.model';
 import { ingridientsService } from './services/ingredients.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ingridientsService } from './services/ingredients.service';
     ShoppingEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [ingridientsService],
   bootstrap: [AppComponent]
