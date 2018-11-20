@@ -50,5 +50,9 @@ export class IngredientsService{
             
         }
     }
+    DeleteIngredient(index: number){
+        this.ingredients.splice(index,1);
+        this.ingredientEmit.next(this.ingredients.slice());
+    }
    
 }

@@ -28,4 +28,7 @@ recipe:Recipe;
   onAddToShoppingList(){
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
+  onDeleteRecipe(){
+  
+  }
 }
