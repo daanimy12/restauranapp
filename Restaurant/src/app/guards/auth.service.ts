@@ -9,14 +9,16 @@ export class AuthService {
   login(email: String, password: String): boolean {
     if (email == "daniel@gmail.com" && password == "12345") {
       this.isloggedIn = true;
+     
     } else {
       this.isloggedIn = false;
+      alert('error')
     }
     return this.isloggedIn;
   }
 
   isUserLoggedIn() {
-    return this.isloggedIn;
+    return this.isUserLoggedIn;
   }
 
 }
