@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
 import { RecipesDetialComponent } from "./recipes/recipes-detial/recipes-detial.component";
 import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes= [
     {
@@ -12,7 +13,7 @@ const routes: Routes= [
     },
     
     {
-        path: 'recipes', component: RecipesComponent, children: [
+        path: 'recipes', component: RecipesComponent, canActivate:[AuthGuard], children: [
             {
                 path:'', component: RecipeStartComponent
             },
