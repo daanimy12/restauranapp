@@ -6,25 +6,26 @@ import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.compon
 import { RecipesDetialComponent } from "./recipes/recipes-detial/recipes-detial.component";
 import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { SigninComponent } from "./auth/signin/signin.component";
 
-const routes: Routes= [
+const routes: Routes = [
     {
-        path: '', redirectTo: '/recipes', pathMatch: 'full'
+        path: '', redirectTo: '/login', pathMatch: 'full'
     },
-    
+    { path: 'login', component: SigninComponent },
     {
-        path: 'recipes', component: RecipesComponent, canActivate:[AuthGuard], children: [
+        path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard], children: [
             {
-                path:'', component: RecipeStartComponent
+                path: '', component: RecipeStartComponent
             },
             {
-                path:'new', component:RecipesEditComponent
+                path: 'new', component: RecipesEditComponent
             },
             {
-                path:':id', component:RecipesDetialComponent
+                path: ':id', component: RecipesDetialComponent
             },
             {
-                path:':id/edit', component:RecipesEditComponent
+                path: ':id/edit', component: RecipesEditComponent
             }
         ]
     },
@@ -33,9 +34,9 @@ const routes: Routes= [
     }
 ]
 @NgModule({
-    imports:[RouterModule.forRoot(routes)],
-    exports:[RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }
