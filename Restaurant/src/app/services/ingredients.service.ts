@@ -1,50 +1,57 @@
+import { Ingredient } from "../shared/ingredients.model";
 import { EventEmitter } from "@angular/core";
 import { Subject } from "rxjs";
-import { Ingredient } from "../shared/ingredients.model";
 
 export class IngredientsService{
-    ingredientsChanged = new Subject<Ingredient[]>();
-    startedEditing = new Subject<number>();
-    
+    //Cambiarlo a un Subject
+   // ingredientEmit = new EventEmitter<Ingredient[]>();
+   ingredientEmit = new Subject<Ingredient[]>();
+    startedEditing =  new Subject<number>();
     private ingredients: Ingredient[]=[
-        new Ingredient('papas', 5),
-        new Ingredient('chiles', 5)
+        new Ingredient('Tomate', 5),
+        new Ingredient('Apples',3),
     ];
 
-    getIngredients(){
-        return this.ingredients.slice();
-    }
-
-    getIngredient(index: number){
+    getIngredient(index : number){
         return this.ingredients[index];
     }
-
+    getIngredientes(){
+        return this.ingredients.slice();
+    }
     updateIngredient(index: number, ingredient: Ingredient){
-        this.ingredients[index] = ingredient;
-        this.ingredientsChanged.next(this.ingredients.slice());
+        this.ingredients[index]=ingredient;
+        this.ingredientEmit.next(this.ingredients.slice());
     }
-
-    addIngredient(ingredient: Ingredient){
+    addIngredient(ingredient : Ingredient){
         this.ingredients.push(ingredient);
-        this.ingredientsChanged.next(this.ingredients.slice());
+        this.ingredientEmit.next(this.ingredients.slice());
     }
-
-    deletedIngredient(index: number){
-        this.ingredients.splice(index, 1);
-        this.ingredientsChanged.next(this.ingredients.slice());
-    }
-
     addIngredients(auxIngredients: Ingredient[]){
-        for (const i of auxIngredients){
-            const nameFound = this.ingredients.find( Ingredient => Ingredient.name === i.name);
-            if (nameFound === undefined){
-                this.ingredients.push(i);
+        
+        for(const i of auxIngredients){
+            var NombreMA = this.ingredients.find((x, index)=>{
+               if( x.name == i.name ){
+                    this.ingredients[index].amount = this.ingredients[index].amount + i.amount;
+                    return true;
+               }else{
+                   
+                   return false;
+               }
+         
+            });
+            
+            if(NombreMA != null){
+              
             }else{
-                nameFound.amount = nameFound.amount + i.amount;
+                this.ingredients.push(i);
             }
+            this.ingredientEmit.next(this.ingredients.slice());
+            
         }
-
-        this.ingredientsChanged.next(this.ingredients.slice());
-
     }
+    DeleteIngredient(index: number){
+        this.ingredients.splice(index,1);
+        this.ingredientEmit.next(this.ingredients.slice());
+    }
+   
 }
