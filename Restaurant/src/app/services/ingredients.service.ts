@@ -1,15 +1,15 @@
-import { Ingredients } from "../shared/ingredients.model";
+import { Ingredient } from "../shared/ingredients.model";
 import { EventEmitter } from "@angular/core";
 import { Subject } from "rxjs";
 
 export class IngredientsService{
     //Cambiarlo a un Subject
    // ingredientEmit = new EventEmitter<Ingredient[]>();
-   ingredientEmit = new Subject<Ingredients[]>();
+   ingredientEmit = new Subject<Ingredient[]>();
     startedEditing =  new Subject<number>();
-    private ingredients: Ingredients[]=[
-        new Ingredients('Tomate', 5),
-        new Ingredients('Apples',3),
+    private ingredients: Ingredient[]=[
+        new Ingredient('Tomate', 5),
+        new Ingredient('Apples',3),
     ];
 
     getIngredient(index : number){
@@ -18,15 +18,15 @@ export class IngredientsService{
     getIngredientes(){
         return this.ingredients.slice();
     }
-    updateIngredient(index: number, ingredient: Ingredients){
+    updateIngredient(index: number, ingredient: Ingredient){
         this.ingredients[index]=ingredient;
         this.ingredientEmit.next(this.ingredients.slice());
     }
-    addIngredient(ingredient : Ingredients){
+    addIngredient(ingredient : Ingredient){
         this.ingredients.push(ingredient);
         this.ingredientEmit.next(this.ingredients.slice());
     }
-    addIngredients(auxIngredients: Ingredients[]){
+    addIngredients(auxIngredients: Ingredient[]){
         
         for(const i of auxIngredients){
             var NombreMA = this.ingredients.find((x, index)=>{
