@@ -10,7 +10,7 @@ import { RecipesDetialComponent } from './recipes/recipes-detial/recipes-detial.
 import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
 import { RecipesItemComponent } from './recipes/recipes-list/recipes-item/recipes-item.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { IngredientsService } from './services/ingredients.service';
+import { IngredientsService } from './services/Ingredients.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
