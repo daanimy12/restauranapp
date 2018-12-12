@@ -1,6 +1,6 @@
 import { Recipe } from "../recipes/recipes.model";
 import { EventEmitter, Injectable } from "@angular/core";
-import { Ingredients } from "../shared/ingredients.model";
+import { Ingredient } from "../shared/ingredients.model";
 import { IngredientsService } from "./Ingredients.service";
 import { Subject } from "rxjs";
 
@@ -15,12 +15,12 @@ export class
     new Recipe('Tacos',
       'tacos especiales',
       'https://cocina-casera.com/mx/wp-content/uploads/2017/09/taco-de-carne.jpg',
-      [new Ingredients('breack', 2),
-      new Ingredients('cheese', 4)]),
+      [new Ingredient('breack', 2),
+      new Ingredient('cheese', 4)]),
 
     new Recipe('hamburgesa', 'hamburgesa pequeña',
       'https://www.recetas360.com/wp-content/uploads/2018/01/HAMBURGUESAS-DE-CARNE.jpg',
-      [new Ingredients('breack', 2), new Ingredients('Tomate', 4), new Ingredients('Peperoni', 5)])
+      [new Ingredient('breack', 2), new Ingredient('Tomate', 4), new Ingredient('Peperoni', 5)])
   ];
   getRecipes() {
     return this.recipes.slice();
@@ -31,7 +31,7 @@ export class
   getRecipe(index: number) {
     return this.recipes[index];
   }
-  addIngredientsToShoppingList(ingredients: Ingredients[]) {
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.ingredientsService.addIngredients(ingredients);
   }
   DeleteRecipe(){
